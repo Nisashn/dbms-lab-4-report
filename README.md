@@ -12,7 +12,7 @@ Aşağıda kutucuk (checkbox) ile gösterilen maddelerden en az birini seçtiği
 
 ### Disk Erişimi
 
-- [ ]  **Blok bazlı disk erişimi** → block_id + offset
+- [ x]  **Blok bazlı disk erişimi** → block_id + offset
 - [ ]  Rastgele erişim
 
 ### VT için Page (Sayfa) Anlamı
@@ -26,20 +26,20 @@ Aşağıda kutucuk (checkbox) ile gösterilen maddelerden en az birini seçtiği
 - [ ]  Veritabanları, Sık kullanılan sayfaları bellekte (RAM) kopyalar mı (caching) ?
 
 - [ ]  LRU / CLOCK gibi algoritmaları
-- [ ]  Diske yapılan I/O nasıl minimize ederler?
+- [x ]  Diske yapılan I/O nasıl minimize ederler?
 
 # 2. Veri Yapıları Perspektifi
 
-- [ ]  B+ Tree Veri Yapıları VT' lerde nasıl kullanılır?
+- [x ]  B+ Tree Veri Yapıları VT' lerde nasıl kullanılır?
 - [ ]  VT' lerde hangi veri yapıları hangi amaçlarla kullanılır?
 - [ ]  Clustered vs Non-Clustered Index Kavramı
 - [ ]  InnoDB satırı diskte nasıl durur?
 - [ ]  LSM-tree (LevelDB, RocksDB) farkı
-- [ ]  PostgreSQL heap + index ayrımı
+- [x  ]  PostgreSQL heap + index ayrımı
 
 DB diske yazarken:
 
-- [ ]  WAL (Write Ahead Log) İlkesi
+- [ x]  WAL (Write Ahead Log) İlkesi
 - [ ]  Log disk (fsync vs write) sistem çağrıları farkı
 
 ---
