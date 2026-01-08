@@ -128,14 +128,14 @@ tasarımını ve çalışma prensiplerini anlamada kritik öneme sahiptir.
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
 Disk erişimi ve page yapısının PostgreSQL üzerinde nasıl ele alındığı buffer manager kodları üzerinden gösterilmiştir.  
-(https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
+[Link] (https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
 
 Buffer Pool mekanizması ve disk I/O optimizasyonu PostgreSQL buffer cache yönetimi üzerinden incelenmiştir.  
-(https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README)
+ [Link] (https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README)
 
 B+ Tree indeks yapısının PostgreSQL içerisinde nasıl kullanıldığı nbtree erişim metodları üzerinden gösterilmiştir.  
- (https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)
+[Link] (https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)
 
 WAL mekanizması ve loglama süreci PostgreSQL WAL yönetimi kodları üzerinden açıklanmıştır.  
-(https://github.com/postgres/postgres/tree/master/src/backend/access/transam)
+ [Link] (https://github.com/postgres/postgres/tree/master/src/backend/access/transam)
 
