@@ -47,7 +47,7 @@ DB diske yazarken:
 # Özet Tablo
 
 
-| Kavram |Veri Yapıları Bakış Açısı | Veritabanı Karşılığı |
+| Kavram |Sistem Perspektifi | Veritabanı Karşılığı |
 |------|-----------------------------------------------|----------------------------------|
 | Disk Erişimi | Bellekte pointer ile doğrudan erişim | Blok bazlı erişim (block_id + offset) |
 | Buffer Pool | RAM üzerinde sık kullanılan verinin cache’lenmesi | Sayfaların (page) bellekte tutulması |
