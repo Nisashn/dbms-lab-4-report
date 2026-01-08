@@ -64,22 +64,78 @@ Ekran kaydı. 2-3 dk. açık kaynak V.T. kodu üzerinde konunun gösterimi. Vide
 
 # Açıklama (Ort. 600 kelime)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia luctus urna, vel aliquet lacus facilisis ac. Donec quis placerat orci, efficitur consectetur lacus. Sed rhoncus erat ex, at sagittis velit mollis et. Aliquam enim orci, sollicitudin sit amet libero quis, mollis ultricies risus. Fusce tempor, felis a consequat tristique, dolor magna convallis nulla, vel ullamcorper magna mauris non ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis imperdiet ex, at blandit sapien. Aliquam lacinia erat ac ipsum fringilla, quis vestibulum augue posuere. Nulla in enim nulla. Nunc euismod odio mauris, sed sollicitudin ex condimentum non. In efficitur egestas enim. Fusce tempus erat quis placerat convallis.
+Veritabanı yönetim sistemlerinde performans, sistem programlama ve veri yapılarından bakıldığında 
+donanım ile yazılım arasındaki etkileşimi görülmektedir. Özellikle disk erişim maliyetleri, bellek kullanımı ve uygun veri
+yapılarının seçimi, bir veritabanının ölçeklenebilir ve hızlı çalışmasında önemlidir.
 
-Nam sit amet tincidunt ante. Pellentesque sit amet quam interdum, pellentesque dui vel, iaculis elit. Donec sed dui sodales nulla dignissim tincidunt. Maecenas semper metus id fermentum vulputate. Pellentesque lobortis hendrerit venenatis. Nullam imperdiet, ex eget ultricies egestas, mauris nunc aliquam ante, sed consectetur tellus ex vel leo. Nunc ut erat dapibus, auctor dolor eu, pretium sem. In lacinia congue eros et finibus. Aenean auctor, leo a feugiat placerat, urna felis lacinia purus, laoreet volutpat mi nisl eget dui. Ut vitae condimentum leo.
+Sistem perspektifinden bakıldığında, disk erişimi veritabanları için en yavaş işlem
+adımlarından biridir. İşletim sistemleri diske byte bazlı değil, blok bazlı erişim
+yapar. Bu nedenle veritabanı sistemleri verileri diskten okurken block_id ve offset
+mantığını kullanır. Rastgele disk erişimleri maliyetli olduğu için, veritabanları
+mümkün olduğunca sıralı ve toplu erişimi tercih eder.Bu yüzden page ortaya çıkar.
+Veritabanları satır bazlı değil,sayfa bazlı okuma yapar. Bir satıra erişilmek istendiğinde
+satırın bulunduğu page tamamıyle belleğe alınır.
+PostgreSQL gibi açık kaynak veritabanlarında bu yaklaşım,
+disk I/O sayısını azaltarak performans artışı sağlar.
 
-Maecenas ex diam, vehicula et nulla vel, mattis viverra metus. Nam at ex scelerisque, semper augue lobortis, semper est. Etiam id pretium odio, eget rutrum neque. Pellentesque blandit magna vel aliquam gravida. Nullam massa nisl, imperdiet at dapibus non, cursus vehicula turpis. Vestibulum rutrum hendrerit augue. Aliquam id nisi id arcu tempor venenatis vel nec erat. Morbi sed posuere erat. Morbi et sollicitudin urna. Suspendisse ullamcorper vitae purus sit amet sodales. Nam ut tincidunt ipsum, ut varius erat. Duis congue magna nec euismod condimentum. In hac habitasse platea dictumst. Nunc mattis odio sed enim laoreet imperdiet. In hac habitasse platea dictumst. Nullam tincidunt quis.
+Veritabanı sistemlerinde disk erişimini azaltmak için Buffer Pool yapısı kullanılır. 
+Buffer Pool, disk üzerindeki page’lerin
+RAM üzerinde tutulduğu bellek alanıdır. Sık kullanılan page’ler bellekte
+önbelleğe alınarak aynı veriye tekrar erişildiğinde disk yerine RAM kullanılır.
+Buffer Pool dolduğunda, hangi page’in bellekten çıkarılacağına karar vermek için
+sayfa değiştirme algoritmaları kullanılır.
+Bu algoritmalar,belli süredir kullanılmayan page’leri bellekten çıkararak
+aktif kullanılan verilerin RAM’de kalmasını sağlar.
+Bu yaklaşım sayesinde diske yapılan I/O işlemleri minimum seviyeye indirilir.
+Özellikle sorguların çoğunun bellek üzerinden karşılanması, veritabanı
+performansını önemli ölçüde artırır. PostgreSQL,
+işletim sisteminin cache mekanizmalarıyla birlikte çalışarak disk erişim maliyetini
+daha da düşürmeyi hedefler.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lacinia luctus urna, vel aliquet lacus facilisis ac. Donec quis placerat orci, efficitur consectetur lacus. Sed rhoncus erat ex, at sagittis velit mollis et. Aliquam enim orci, sollicitudin sit amet libero quis, mollis ultricies risus. Fusce tempor, felis a consequat tristique, dolor magna convallis nulla, vel ullamcorper magna mauris non ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam quis imperdiet ex, at blandit sapien. Aliquam lacinia erat ac ipsum fringilla, quis vestibulum augue posuere. Nulla in enim nulla. Nunc euismod odio mauris, sed sollicitudin ex condimentum non. In efficitur egestas enim. Fusce tempus erat quis placerat convallis.
+Veri yapıları perspektifinden bakıldığında, veritabanı performansını belirleyen
+yapılardan biri B+ Tree veri yapısıdır. B+ Tree, disk tabanlı sistemler
+için dengeli bir ağaç yapısıdır ve veritabanı indekslerinin
+oluşturulmasında yaygın olarak kullanılır. Bu yapı sayesinde arama, ekleme ve
+silme işlemleri az sayıda page erişimi ile gerçekleştirilebilir.
+B+ Tree’nin iç düğümleri yönlendirme bilgilerini içerirken, yaprak düğümleri
+asıl veriye veya verinin disk üzerindeki adresine işaret eder. Her bir düğüm,
+genellikle disk üzerindeki bir page’e karşılık gelir. Bu durum, disk erişim
+sayısını sınırlayarak performansın artmasını sağlar.
+PostgreSQL veritabanında tablo verileri heap yapısında saklanır ve indeksler
+ayrı veri yapıları olarak tutulur. İndeksler, ilgili satırın bulunduğu page ve
+offset bilgisini içerir. Bu heap + index ayrımı, veri ekleme ve güncelleme
+işlemlerini daha esnek hale getirirken, indekslerin bağımsız olarak yönetilmesine
+olanak tanır.
 
-Nam sit amet tincidunt ante. Pellentesque sit amet quam interdum, pellentesque dui vel, iaculis elit. Donec sed dui sodales nulla dignissim tincidunt. Maecenas semper metus id fermentum vulputate. Pellentesque lobortis hendrerit venenatis. Nullam imperdiet, ex eget ultricies egestas, mauris nunc aliquam ante, sed consectetur tellus ex vel leo. Nunc ut erat dapibus, auctor dolor eu, pretium sem. In lacinia congue eros et finibus. Aenean auctor, leo a feugiat placerat, urna felis lacinia purus, laoreet volutpat mi nisl eget dui. Ut vitae condimentum leo.
+Veritabanlarında diske yazma işlemleri sırasında hem performans hem de veri
+tutarlılığını sağlamak için WAL kullanılır.Veritabanında yapılacak tüm değişiklikler 
+önce log dosyasına yazılır, ardından asıl veri dosyalarına uygulanır. 
+Bu yaklaşım, sistem çökmesi durumunda verilerin log üzerinden geri yüklenebilmesini sağlar.
+WAL write gibi sistem çağrılarını kontrollü şekilde kullanarak disk yazma maliyetini azaltmayı hedefler. 
+Birden fazla değişikliğin aynı anda halde loglanması, rastgele disk yazımlarının önüne geçerek performans
+artışı sağlar. PostgreSQL gibi açık kaynak veritabanlarında wal_writer ve
+checkpointer süreçleri bu işlemleri yönetir.
 
-Maecenas ex diam, vehicula et nulla vel, mattis viverra metus. Nam at ex scelerisque, semper augue lobortis, semper est. Etiam id pretium odio, eget rutrum neque. Pellentesque blandit magna vel aliquam gravida. Nullam massa nisl, imperdiet at dapibus non, cursus vehicula turpis. Vestibulum rutrum hendrerit augue. Aliquam id nisi id arcu tempor venenatis vel nec erat. Morbi sed posuere erat. Morbi et sollicitudin urna. Suspendisse ullamcorper vitae purus sit amet sodales. Nam ut tincidunt ipsum, ut varius erat. Duis congue magna nec euismod condimentum. In hac habitasse platea dictumst. Nunc mattis odio sed enim laoreet imperdiet. In hac habitasse platea dictumst. Nullam tincidunt quis.
+Sonuç olarak, veritabanı performansı disk erişimlerinin minimize edilmesi,
+buffer pool kullanımı, B+ Tree gibi uygun veri yapılarının tercih edilmesi ve
+WAL gibi sistem seviyesinde güvenli yazma teknikleri ile doğrudan ilişkilidir.
+Sistem programlama ve veri yapıları bilgisi, modern veritabanı sistemlerinin
+tasarımını ve çalışma prensiplerini anlamada kritik öneme sahiptir.
+
+
+
+
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
+Disk erişimi ve page yapısının PostgreSQL üzerinde nasıl ele alındığı buffer manager kodları üzerinden gösterilmiştir.  
+(https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
 
-Açıklama [Linki](https://...) \
-Açıklama [Linki](https://...) \
-Açıklama [Linki](https://...) \
-... \
-...
+Buffer Pool mekanizması ve disk I/O optimizasyonu PostgreSQL buffer cache yönetimi üzerinden incelenmiştir.  
+(https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README)
+
+B+ Tree indeks yapısının PostgreSQL içerisinde nasıl kullanıldığı nbtree erişim metodları üzerinden gösterilmiştir.  
+ (https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)
+
+WAL mekanizması ve loglama süreci PostgreSQL WAL yönetimi kodları üzerinden açıklanmıştır.  
+(https://github.com/postgres/postgres/tree/master/src/backend/access/transam)
+
