@@ -46,13 +46,14 @@ DB diske yazarken:
 
 # Özet Tablo
 
-| Kavram      | Bellek          | Disk / DB      |
-| ----------- | --------------- | -------------- |
-| Adresleme   | Pointer         | Page + Offset  |
-| Hız         | O(1)            | Page IO        |
-| PK          | Yok             | Index anahtarı |
-| Veri yapısı | Array / Pointer | B+Tree         |
-| Cache       | CPU cache       | Buffer Pool    |
+
+| Konu | Sistem Programlama / Veri Yapıları Bakış Açısı | Veritabanı (Disk / DB) Karşılığı |
+|------|-----------------------------------------------|----------------------------------|
+| Disk Erişimi | Bellekte pointer ile doğrudan erişim | Blok bazlı erişim (block_id + offset) |
+| Buffer Pool | RAM üzerinde sık kullanılan verinin cache’lenmesi | Sayfaların (page) bellekte tutulması |
+| Disk I/O Optimizasyonu | Gereksiz sistem çağrılarından kaçınma | Buffer Pool ile disk erişiminin azaltılması |
+| B+ Tree | Dengeli ağaç yapısı, logaritmik arama | Index yapısı olarak kullanılır |
+| WAL | Önce log’a yazma prensibi | Crash sonrası recovery ve durability sağlar |
 
 ---
 
