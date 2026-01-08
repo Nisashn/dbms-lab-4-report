@@ -120,7 +120,7 @@ Sonuç olarak, veritabanı performansı disk erişimlerinin minimize edilmesi,
 buffer pool kullanımı, B+ Tree gibi uygun veri yapılarının tercih edilmesi ve
 WAL gibi sistem seviyesinde güvenli yazma teknikleri ile doğrudan ilişkilidir.
 Sistem programlama ve veri yapıları bilgisi, modern veritabanı sistemlerinin
-tasarımını ve çalışma prensiplerini anlamada kritik öneme sahiptir.
+tasarımını ve çalışma prensiplerini anlamada önemlidir.
 
 
 
