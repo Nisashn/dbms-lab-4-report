@@ -25,7 +25,7 @@ Aşağıda kutucuk (checkbox) ile gösterilen maddelerden en az birini seçtiği
 
 - [ ]  Veritabanları, Sık kullanılan sayfaları bellekte (RAM) kopyalar mı (caching) ?
 
-- [x]  LRU / CLOCK gibi algoritmaları
+- []  LRU / CLOCK gibi algoritmaları
 - [x]  Diske yapılan I/O nasıl minimize ederler?
 
 # 2. Veri Yapıları Perspektifi
@@ -129,8 +129,7 @@ tasarımını ve çalışma prensiplerini anlamada önemlidir.
 ## VT Üzerinde Gösterilen Kaynak Kodları
  Disk erişimi ve page yapısının PostgreSQL üzerinde nasıl yönetildiği  [PostgreSQL Buffer Manager Kaynak Kodu](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
 
-Buffer Pool yapısı ve disk I/O optimizasyonu  
-  [[PostgreSQL Buffer Cache Yönetimi](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README](https://github.com/postgres/postgres/blob/master/src/include/storage/buf_internals.h))
+[PostgreSQL Buffer Pool Kaynak Kodu](https://github.com/postgres/postgres/tree/master/src/backend/storage/buffer)
 
  B+ Tree indeks yapısının PostgreSQL içerisinde kullanımı  
   [B+ Tree (nbtree) Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)
