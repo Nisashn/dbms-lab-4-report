@@ -132,10 +132,10 @@ Disk erişimi,page yapısının ve Buffer Pool (Disk I/O Optimizasyonu) PostgreS
 
 
 
-[PostgreSQL B+ Tree Index Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/nbtree/nbtinsert.c)  
+ B+ Tree Veri Yapıları [PostgreSQL B+ Tree Index Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/nbtree/nbtinsert.c)  
 
 
-[PostgreSQL WAL (Transaction Log) Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/transam/xlog.c) 
+ Write Ahead Log (WAL) İlkesi [PostgreSQL WAL (Transaction Log) Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/transam/xlog.c) 
 
 
   
