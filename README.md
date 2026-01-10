@@ -57,8 +57,8 @@ DB diske yazarken:
 
 ---
 
-# Video [Linki](https://www.youtube.com/watch?v=Nw1OvCtKPII&t=2635s) 
-https://youtu.be/pAjHFb9NoBo
+# Video [Linki](https://youtu.be/pAjHFb9NoBo) 
+
 
 # Açıklama (Ort. 600 kelime)
 
