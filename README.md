@@ -128,21 +128,14 @@ tasarımını ve çalışma prensiplerini anlamada önemlidir.
 
 ## VT Üzerinde Gösterilen Kaynak Kodları
 
-Disk erişimi ve page yapısının PostgreSQL üzerinde nasıl yönetildiği  [PostgreSQL Buffer Manager Kaynak Kodu](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
+Disk erişimi,page yapısının ve Buffer Pool (Disk I/O Optimizasyonu) PostgreSQL üzerinde nasıl yönetildiği  [PostgreSQL Buffer Manager Kaynak Kodu](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
 
 
-- [PostgreSQL Buffer Pool Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/storage/buffer)  
-Buffer pool’un genel yapısını, bellekte tutulan sayfaları ve disk I/O’nun nasıl azaltıldığını gösteren modül.
 
-- [PostgreSQL Buffer Manager (bufmgr.c)](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)  
-Sayfaların önce RAM’de aranmasını, bulunamazsa diskten okunmasını sağlayan ana buffer yönetim kodu.
-
-- [PostgreSQL B+ Tree Index Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)  
-Veritabanlarında indeksleme için kullanılan B+ Tree veri yapısının uygulandığı kaynak kodlar.
+[PostgreSQL B+ Tree Index Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/nbtree/nbtinsert.c)  
 
 
-- [PostgreSQL WAL (Transaction Log) Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/transam)  
-Verilerin diske yazılmadan önce loglanmasını sağlayan WAL mekanizmasının uygulandığı modül.
+[PostgreSQL WAL (Transaction Log) Kaynak Kodları](https://github.com/postgres/postgres/blob/master/src/backend/access/transam/xlog.c) 
 
 
   
