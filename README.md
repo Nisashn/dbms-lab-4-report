@@ -130,11 +130,19 @@ tasarımını ve çalışma prensiplerini anlamada önemlidir.
 
 Disk erişimi ve page yapısının PostgreSQL üzerinde nasıl yönetildiği  [PostgreSQL Buffer Manager Kaynak Kodu](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)
 
-[PostgreSQL Buffer Pool Kaynak Kodu](https://github.com/postgres/postgres/tree/master/src/backend/storage/buffer) 
 
-B+ Tree indeks yapısının PostgreSQL içerisinde kullanımı [B+ Tree (nbtree) Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree) 
+- [PostgreSQL Buffer Pool Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/storage/buffer)  
+Buffer pool’un genel yapısını, bellekte tutulan sayfaları ve disk I/O’nun nasıl azaltıldığını gösteren modül.
 
-Write Ahead Log (WAL) mekanizması [WAL Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/transam)
+- [PostgreSQL Buffer Manager (bufmgr.c)](https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/bufmgr.c)  
+Sayfaların önce RAM’de aranmasını, bulunamazsa diskten okunmasını sağlayan ana buffer yönetim kodu.
+
+- [PostgreSQL B+ Tree Index Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/nbtree)  
+Veritabanlarında indeksleme için kullanılan B+ Tree veri yapısının uygulandığı kaynak kodlar.
+
+
+- [PostgreSQL WAL (Transaction Log) Kaynak Kodları](https://github.com/postgres/postgres/tree/master/src/backend/access/transam)  
+Verilerin diske yazılmadan önce loglanmasını sağlayan WAL mekanizmasının uygulandığı modül.
 
 
   
